@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity table="tiles" repository-class="Scandio\Bundle\FireStarterBundle\Entity\TileRepository" name="Scandio\Bundle\FireStarterBundle\Entity\Tile">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="title" type="string" column="title" length="255"/>
+    <field name="description" type="text" column="description" nullable="true"/>
+    <field name="createdAt" type="datetime" column="created_at"/>
+    <field name="modifiedAt" type="datetime" column="modified_at"/>
+    <field name="position" type="integer" column="position"/>
+    <field name="image" type="string" column="image" nullable="true"/>
+
+      <one-to-many target-entity="Link" mapped-by="tile" field="links">
+          <order-by>
+              <order-by-field name="clickCount" direction="DESC"/>
+          </order-by>
+      </one-to-many>
+  </entity>
+</doctrine-mapping>

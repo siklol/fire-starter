@@ -1,0 +1,238 @@
+
+html { overflow-y: scroll; } /* actived y-scroller */
+
+body { color:#fff; padding-top: 50px; background: url(../img/basis/back.jpg) no-repeat fixed 100% 100% #000; -moz-background-size: cover; -webkit-background-size: cover; -o-background-size: cover; background-size: cover; }
+
+.clear { clear:both; }
+
+.col-md-1, .col-md-3 {  margin-bottom:24px; }
+
+
+.box { position:relative; overflow:hidden; height:213px; /*margin-bottom:24px;*/ background:#000;  } 
+.box .thumb { position:absolute; top:0px; left:0px;  }  
+
+
+.content { position:absolute; top:146px; left:0px; background:url(../img/basis/transBackBlack.png); width:100%; height:263px; text-align:center; }
+.content h1 { font-size:1em; line-height:1.3em; padding:12px; margin:0px; background:url(../img/basis/transBackBlack.png); text-align:left; }
+.content a { color:#fff; padding:2px; margin:0px; display:inline-block; font-size:12px; line-height:12px; }
+.content a:hover { color:#fff; text-decoration:none; padding:2px; margin:0px; background-color:red; font-size:12px; line-height:12px; }
+.content .inside { padding:12px; }
+.content span { font-size:11px; }
+
+
+
+
+
+.pixel { position:absolute; top:0px; left:0px; width:100%; height:263px; background:url(../img/basis/pixel.png);  }
+
+.quicklinks { margin-bottom:24px; }
+.quicklinks  .col-md-1 { margin-bottom:4px; }
+.quicklinks  a { font-size:1.3em; display:block; }
+.quicklinks  a:hover { text-decoration:none; }
+
+.quicklinks .facebook { background:#3a589b;  }
+.quicklinks .facebook a { color: #fff; }
+.quicklinks .facebook a:hover { color: #fff; }
+
+.quicklinks .gmail { background:#fff; }
+.quicklinks .gmail a { color: #000; }
+.quicklinks .gmail a:hover { color: #000; }
+
+.quicklinks .googleSearch { background:#4486f8; }
+.quicklinks .googleSearch a { color: #fff; }
+.quicklinks .googleSearch a:hover { color: #fff; }
+
+.quicklinks .youtube { background:#fff; }
+.quicklinks .youtube a { color: #8f1d1c; }
+.quicklinks .youtube a:hover { color: #8f1d1c; }
+
+.quicklinks .bild { background:#fff; }
+.quicklinks .bild a { color: #d80000; }
+.quicklinks .bild a:hover { color: #d80000; }
+
+.quicklinks .viply { background:#d60033; }
+.quicklinks .viply a { color: #fff; }
+.quicklinks .viply a:hover { color: #fff; }
+
+.quicklinks .lolwall { background:#5e7db5; }
+.quicklinks .lolwall a { color: #fff; }
+.quicklinks .lolwall a:hover { color: #fff; }
+
+.quicklinks .webfail { background:#333333; }
+.quicklinks .webfail a { color: #fff; }
+.quicklinks .webfail a:hover { color: #fff; }
+
+.quicklinks .loremIpsum { background:#d03428; }
+.quicklinks .loremIpsum a { color: #fff; }
+.quicklinks .loremIpsum a:hover { color: #fff; }
+
+.quicklinks .sv { background:url(../img/basis/svBack.png) repeat-x #000; }
+.quicklinks .sv a { color: #fff; }
+.quicklinks .sv a:hover { color: #fff; }
+
+.quicklinks .hw { background:#12528e; }
+.quicklinks .hw a { color: #fff; }
+.quicklinks .hw a:hover { color: #fff; }
+
+.quicklinks .iconFinder { background:#fff; }
+.quicklinks .iconFinder a { color: #000; }
+.quicklinks .iconFinder a:hover { color: #000; }
+
+
+.scandio { background:#FFF; }
+.scandio img { margin-top:45px; margin-left:25px; }
+
+.loremIpsum2 { background:#d03428; }
+.loremIpsum2 img { margin-top:45px; margin-left:25px; }
+
+.google { background:#fff; }
+.google img { margin-top:45px; margin-left:25px; }
+
+.jsFiddle { background:#fff; }
+.jsFiddle img { margin-top:45px; margin-left:25px; }
+
+.codeGeschnipsel { background:#efefef; }
+.codeGeschnipsel img { margin-top:45px; margin-left:24px; }	
+
+.sskm { background:red; }
+.sskm img { margin-top:45px; margin-left:25px; }
+
+.meinl { background:#fff; }
+.meinl img { margin-top:45px; margin-left:25px; }
+
+.ifo { background:#fff; }
+.ifo img { margin-top:45px; margin-left:25px; }
+
+.haffa { background:#999999; }
+.haffa img { margin-top:45px; margin-left:25px; }
+
+.ihkm { background:#fff; }
+.ihkm img { margin-top:45px; margin-left:25px; }
+
+.ihkn { background:#fff; }
+.ihkn img { margin-top:45px; margin-left:25px; }
+
+.auwi { background:#204f85; }
+.auwi img { margin-top:45px; margin-left:25px; }
+
+.limesurvey { background:#fff; }
+.limesurvey img { margin-top:45px; margin-left:25px; }
+
+.bayernInternational { background:#fff; }
+.bayernInternational img { margin-top:45px; margin-left:25px; }
+
+.langenscheidt { background:#ffce3c; }
+.langenscheidt img { margin-top:45px; margin-left:25px; }
+
+.ihkRepository { background:#003466; }
+.ihkRepository img { margin-top:45px; margin-left:25px; }
+
+.sisby { background:#fff; }
+.sisby img { margin-top:45px; margin-left:25px; }
+
+
+
+
+@media only screen and (min-width: 320px) {
+	/*
+	.mediaQueryOutput { background:#FCF; }
+	.mediaQueryOutput h1:before { content:"320px bis 480px" }
+	*/
+}
+@media only screen and (min-width: 480px) {
+	/*
+	.mediaQueryOutput { background:#FCF; }
+	.mediaQueryOutput h1:before { content:"480px bis 768px" }
+	*/
+}
+@media (min-width: 768px) { 
+	/*
+	.mediaQueryOutput { background:#FCF; }
+	.mediaQueryOutput h1:before { content:"768px bis 992px" }
+	*/
+	.box { height:213px; }
+	.content { top:146px; }	
+
+	
+}
+@media (min-width: 992px ) { 
+	/*
+	.mediaQueryOutput { background:#CFF; }
+	.mediaQueryOutput h1:before { content:"992px bis 1320px" }
+	*/
+	.box { height:213px; }	
+	.content { top:146px; }
+	.content a {  }
+	.content h1 { padding:12px; }
+	.content .inside { padding:4px; }
+	.video img { margin-left:-114px; }
+	
+	.quicklinks span { display:none; }
+	
+	.quicklinks { margin-bottom:0px; }
+	.quicklinks .col-md-1 img { width:51px; height:51px;  }
+	.quicklinks .col-md-1 { margin-bottom: 24px; }
+	
+	.scandio img { margin-left:0px; }	
+	.loremIpsum2 img { margin-left:0px; }	
+	.google img { margin-left:0px; }
+	.jsFiddle img { margin-left:0px; }	
+	.codeGeschnipsel img { margin-left:0px; }	
+	.sskm img { margin-left:0px; }
+	.meinl img { margin-left:0px; }
+	.meinl a { font-size:10px; }
+	.meinl a:hover { font-size:10px; }
+	.ifo img { margin-left:0px; }
+	.haffa img { margin-left:0px; }
+	.ihkm img { margin-left:0px; }
+	.ihkn img { margin-left:0px; }
+	.auwi img { margin-left:0px; }
+	.limesurvey img { margin-left:0px; }
+	.bayernInternational img { margin-left:0px; }
+	.langenscheidt img { margin-left:0px; }
+	.ihkRepository img { margin-left:0px; }
+	.sisby img { margin-left:0px; }
+		
+}
+
+@media (min-width: 1200px) {
+	
+	.box { height:263px; } 
+	.content { top:197px; }
+	.content h1 { padding:24px; }
+	.content .inside { padding:12px; }
+	.video img { margin-left:-78px; }
+	
+	.quicklinks .col-md-1 img { width:68px; height:68px; }
+	
+	.scandio img { margin-left:25px; }
+	.loremIpsum2 img { margin-left:25px; }	
+	.google img { margin-left:25px; }
+	.jsFiddle img { margin-left:25px; }	
+	.codeGeschnipsel img { margin-left:25px; }	
+	.sskm img { margin-left:25px; }
+	.meinl img { margin-left:25px; }
+	.meinl a { font-size:12px; }
+	.meinl a:hover { font-size:12px; }
+	.ifo img { margin-left:25px; }
+	.haffa img { margin-left:25px; }
+	.ihkm img { margin-left:25px; }
+	.ihkn img { margin-left:25px; }
+	.auwi img { margin-left:25px; }
+	.limesurvey img { margin-left:25px; }
+	.bayernInternational img { margin-left:25px; }
+	.langenscheidt img { margin-left:25px; }
+	.ihkRepository img { margin-left:25px; }
+	.sisby img { margin-left:25px; }
+	
+}
+
+@media (min-width: 1320px) { 
+	/*
+	.mediaQueryOutput { background:#CCF; }
+	.mediaQueryOutput h1:before { content:"1320px +++" }
+	*/	
+	.box { height:263px; }
+	.content { top:197px; } 
+	
+}

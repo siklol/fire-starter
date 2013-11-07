@@ -1,0 +1,5 @@
+scandio_fire_starter:
+    resource: "@ScandioFireStarterBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

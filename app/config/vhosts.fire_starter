@@ -1,0 +1,14 @@
+SSLStrictSNIVHostCheck off
+<VirtualHost *:80>
+	ServerName local.fitness.de
+
+    DocumentRoot C:\web\devl0g_de\fitness\master\web
+
+	<Directory C:\web\devl0g_de\fitness\master\web>
+		Require all granted
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Order allow,deny
+		allow from all
+	</Directory>
+</VirtualHost>

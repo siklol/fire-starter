@@ -1,0 +1,43 @@
+{% extends 'ScandioFireStarterBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>
+        {{ 'Tile list' | trans }}
+
+        <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#add-tile-modal">
+            {{ 'Add tile' | trans }}
+        </button>
+    </h1>
+
+    {% include 'ScandioFireStarterBundle:Tile:modal_add.html.twig' %}
+
+    {% for rows in entities %}
+        <div class="row">
+            {% for tile in rows %}
+                {% include 'ScandioFireStarterBundle:Link:modal_add.html.twig' %}
+                <div class="col-md-3">
+                    <div class="box">
+                        <img src="{{ tile.image }}" class="thumb" />
+                        <div class="content">
+                            <h1>
+                                <a href="{{ path('tiles_show', {'id': tile.id}) }}">{{ tile.title }}</a>
+                                <span class="label label-primary pull-right" >
+                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#add-link-modal">+</a>
+                                </span></h1>
+
+                            <div class="inside">
+                                {{ tile.description }}<br/>
+
+                                {% for link in tile.links %}
+                                    <a href="{{ path('links_out', {'id': link.id}) }}" title="{{ link.title }}" target="_blank">{{ link.title }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ 'No tiles' | trans }}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="/bundles/scandiofirestarter/vendor/stforze-firestarter/space_invader.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bundles/scandiofirestarter/vendor/stforze-firestarter/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/bundles/scandiofirestarter/vendor/stforze-firestarter/css/styles.css" rel="stylesheet">
+    <link href="/bundles/scandiofirestarter/css/basic.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/bundles/scandiofirestarter/vendor/stforze-firestarter/js/html5shiv.js"></script>
+    <script src="/bundles/scandiofirestarter/vendor/stforze-firestarter/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!-- Navigation -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('tiles') }}">{{ 'Starter' | trans }}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ path('tiles') }}">{{ 'Home' | trans }}</a></li>
+                <li><a href="videoMusic.html">Video/Music</a></li>
+                <li><a href="places.html">Places</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+<!-- Navigation end -->
+
+<!-- content Area -->
+<div class="container">
+
+    <!-- Intro Area -->
+    <div class="intro">
+        <h1>Starter</h1>
+        <p class="lead">
+            <strong>I'm still in BETA.</strong>
+            <br />
+            Home is where your WI-FI connects automatically
+        </p>
+    </div>
+    <!-- Intro Area ende -->
+
+    {% block content %}{% endblock %}
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/bundles/scandiofirestarter/vendor/stforze-firestarter/js/jquery.js"></script>
+<script src="/bundles/scandiofirestarter/vendor/stforze-firestarter/js/bootstrap.min.js"></script>
+<script src="/bundles/scandiofirestarter/vendor/stforze-firestarter/js/script.js"></script>
+
+</body>
+</html>

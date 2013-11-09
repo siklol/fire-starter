@@ -25,7 +25,7 @@ class TileController extends Controller
      * Lists all Tile entities.
      *
      * @Route("/", name="tiles")
-     * @Route("/display:{type}", name="tiles_type")
+     * @Route("/reorder", name="tiles_reorder_list", defaults={"type"="list"})
      * @Method("GET")
      */
     public function indexAction(Request $request, $type = 'tiles')

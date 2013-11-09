@@ -3,10 +3,6 @@
 {% block content -%}
     <h1>
         {{ 'Tile list' | trans }}
-
-        <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#add-tile-modal">
-            {{ 'Add tile' | trans }}
-        </button>
     </h1>
 
     {% include 'ScandioFireStarterBundle:Tile:modal_add.html.twig' %}

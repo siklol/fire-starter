@@ -5,15 +5,15 @@
         {{ 'Tile list' | trans }}
     </h1>
 
-    {% include 'ScandioFireStarterBundle:Tile:modal_add.html.twig' %}
+    <style>
+        li.sortable-placeholder { border: 1px dashed #CCC; background: none; height: 100px; width: 100px;}
+    </style>
 
     <div class="row">
         <ul id="tile-list">
             {% for tile in entities %}
-                {% include 'ScandioFireStarterBundle:Link:modal_add.html.twig' %}
                 <li class="tile" data-position="{{ tile.position }}" data-url="{{ path('tiles_reorder', {'id': tile.id}) }}">
                     <img src="{{ tile.image }}" class="thumb img-rounded" width="100" height="100" />
-                    <a href="javascript:void(0);" data-toggle="modal" data-target="#add-link-modal-{{ tile.id }}">+</a> |
                     <a href="{{ path('tiles_show', {'id': tile.id}) }}">{{ tile.title }}</a> |
                     {% for link in tile.links %}
                         <a href="{{ path('links_out', {'id': link.id}) }}" title="{{ link.title }}" target="_blank">{{ link.title }}</a>
@@ -32,7 +32,7 @@
     $('#tile-list').sortable({items: 'li.tile'}).bind('sortupdate', function(e, ui) {
         $.ajax({
             url: $(ui.item).attr('data-url'),
-            data: {position: ui.newIndex}
+            data: {position: parseInt(ui.newIndex)+1}
         });
     });
 </script>

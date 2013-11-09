@@ -34,7 +34,7 @@ class TileRepository extends EntityRepository
             ->getResult();
         $em = $this->getEntityManager();
 
-        if ($position > count($tiles) || $position < 1) {
+        if ($position-1 > count($tiles) || $position < 1) {
             $position = 0;
         } else {
             $position--;

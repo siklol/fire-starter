@@ -42,7 +42,7 @@ class LinkController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('tiles_show', array('id' => $tile->getId())));
+        return $this->redirect($request->headers->get('referer'));
     }
 
     /**

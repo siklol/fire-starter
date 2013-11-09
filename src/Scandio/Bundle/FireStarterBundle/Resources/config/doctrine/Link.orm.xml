@@ -9,6 +9,7 @@
     <field name="createdAt" type="datetime" column="created_at"/>
     <field name="modifiedAt" type="datetime" column="modified_at"/>
     <field name="clickCount" type="integer" column="click_count"/>
+    <field name="position" type="integer" column="position"/>
 
       <many-to-one target-entity="Tile" field="tile" inversed-by="links" />
   </entity>

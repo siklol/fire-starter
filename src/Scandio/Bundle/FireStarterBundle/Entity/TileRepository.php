@@ -12,4 +12,40 @@ use Doctrine\ORM\EntityRepository;
  */
 class TileRepository extends EntityRepository
 {
+    /**
+     * @return array
+     */
+    public function getAll()
+    {
+        return $this->createQueryBuilder('t')->orderBy('t.position')->getQuery()->getResult();
+    }
+
+    /**
+     * @param Tile $currentTile
+     * @param $position
+     */
+    public function resort(Tile $currentTile, $position)
+    {
+        $tiles = $this->createQueryBuilder('t')
+            ->where('t.id != :id')
+            ->setParameter('id', $currentTile->getId())
+            ->orderBy('t.position')
+            ->getQuery()
+            ->getResult();
+        $em = $this->getEntityManager();
+
+        if ($position > count($tiles) || $position < 1) {
+            $position = 0;
+        } else {
+            $position--;
+        }
+        array_splice($tiles, $position, 0, [$currentTile]);
+
+        foreach ($tiles as $num => $tile) {
+            $tile->setPosition($num+1);
+            $em->persist($tile);
+        }
+
+        $em->flush();
+    }
 }

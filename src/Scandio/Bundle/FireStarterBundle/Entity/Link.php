@@ -44,11 +44,17 @@ class Link
      */
     private $clickCount;
 
+    /**
+     * @var integer
+     */
+    private $position;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->modifiedAt = new \DateTime();
         $this->clickCount = 0;
+        $this->position = 0;
     }
 
 

@@ -3,6 +3,8 @@
 namespace Scandio\Bundle\FireStarterBundle\Controller;
 
 use Scandio\Bundle\FireStarterBundle\Entity\Link;
+use Scandio\Bundle\FireStarterBundle\Entity\TileRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -23,19 +25,25 @@ class TileController extends Controller
      * Lists all Tile entities.
      *
      * @Route("/", name="tiles")
+     * @Route("/display:{type}", name="tiles_type")
      * @Method("GET")
-     * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request, $type = 'tiles')
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ScandioFireStarterBundle:Tile')->findAll();
+        $entities = $em->getRepository('ScandioFireStarterBundle:Tile')->getAll();
+        $type = in_array($type, ['list', 'tiles']) ? $type : '';
 
-        return array(
-            'entities' => array_chunk($entities, 4),
-            'form' => $this->createForm(new TileType())->createView()
-        );
+        if ($type == 'tiles') {
+            $entities = array_chunk($entities, 4);
+        }
+
+        return $this->render("ScandioFireStarterBundle:Tile:index.$type.html.twig", [
+            'entities' => $entities,
+            'form' => $this->createForm(new TileType())->createView(),
+            'type' => $type
+        ]);
     }
 
     /**
@@ -63,7 +71,7 @@ class TileController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('tiles'));
+        return $this->redirect($request->headers->get('referer'));
     }
 
     /**
@@ -78,5 +86,27 @@ class TileController extends Controller
         return array(
             'tile' => $tile
         );
+    }
+
+    /**
+     * @Route("/reorder/{id}", name="tiles_reorder")
+     *
+     * @param Request $request
+     * @param Tile $tile
+     * @param $position
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function sortAction(Request $request, Tile $tile)
+    {
+        $position = $request->get('position', 0);
+
+        /** @var TileRepository $tileRepository */
+        $tileRepository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('Scandio\Bundle\FireStarterBundle\Entity\Tile');
+
+        $tileRepository->resort($tile, $position);
+
+        return new JsonResponse(['status' => 'ok']);
     }
 }

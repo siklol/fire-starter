@@ -1,4 +1,4 @@
-<div id="add-link-modal" class="modal fade">
+<div id="add-link-modal-{{ tile.id }}" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,7 +6,7 @@
                 <h4 class="modal-title">{{ 'Add a new link' | trans }}</h4>
             </div>
             <div class="modal-body">
-                <form id="add-link-form" role="form" method="post" action="{{ path('links_add', {'id': tile.id}) }}" enctype="multipart/form-data">
+                <form id="add-link-form-{{ tile.id }}" role="form" method="post" action="{{ path('links_add', {'id': tile.id}) }}" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">{{ 'Title' | trans }}</label>
                         <input type="title" class="form-control" name="title" id="title" placeholder="{{ 'Add a link name' | trans }}">
@@ -21,7 +21,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Close' | trans }}</button>
-                <button type="button" class="btn btn-primary" onclick="$('#add-link-form').submit();">{{ 'Add' | trans }}</button>
+                <button type="button" class="btn btn-primary" onclick="$('#add-link-form-{{ tile.id }}').submit();">{{ 'Add' | trans }}</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

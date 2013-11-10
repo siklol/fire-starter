@@ -25,6 +25,11 @@ class Link
     private $url;
 
     /**
+     * @var string
+     */
+    private $favicon;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -66,6 +71,38 @@ class Link
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param string $favicon
+     */
+    public function setFavicon($favicon)
+    {
+        $this->favicon = $favicon;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFavicon()
+    {
+        return $this->favicon;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 
     /**

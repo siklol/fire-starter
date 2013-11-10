@@ -24,5 +24,10 @@
             <argument>/images/</argument>
             <argument id="validator" type="service"/>
         </service>
+
+        <service id="fav_icon_fetcher" class="Scandio\Library\Url\FavIconFetcher">
+            <argument>%kernel.root_dir%/../web/images/icons/</argument>
+            <argument>/images/icons/</argument>
+        </service>
     </services>
 </container>

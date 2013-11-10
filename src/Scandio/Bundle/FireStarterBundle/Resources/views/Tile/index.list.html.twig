@@ -16,7 +16,9 @@
                     <img src="{{ tile.image }}" class="thumb img-rounded" width="100" height="100" />
                     <a href="{{ path('tiles_show', {'id': tile.id}) }}">{{ tile.title }}</a> |
                     {% for link in tile.links %}
-                        <a href="{{ path('links_out', {'id': link.id}) }}" title="{{ link.title }}" target="_blank">{{ link.title }}</a>
+                        <a href="{{ path('links_out', {'id': link.id}) }}" title="{{ link.title }}" target="_blank">
+                            {{ link.title }}
+                        </a>
                     {% endfor %}
                 </li>
             {% else %}

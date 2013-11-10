@@ -35,6 +35,7 @@ class LinkController extends Controller
             $link->setTitle($title);
             $link->setUrl($url);
             $link->setTile($tile);
+            $link->setFavicon($this->get('fav_icon_fetcher')->getByGoogleService($url));
 
             $em = $this->getDoctrine()->getManager();
 

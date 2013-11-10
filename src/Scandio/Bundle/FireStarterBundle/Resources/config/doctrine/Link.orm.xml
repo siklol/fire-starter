@@ -6,6 +6,7 @@
     </id>
     <field name="title" type="string" column="title" length="255"/>
     <field name="url" type="string" column="url" length="255"/>
+    <field name="favicon" type="string" column="favicon" length="255" nullable="true"/>
     <field name="createdAt" type="datetime" column="created_at"/>
     <field name="modifiedAt" type="datetime" column="modified_at"/>
     <field name="clickCount" type="integer" column="click_count"/>

@@ -109,4 +109,46 @@ class TileController extends Controller
 
         return new JsonResponse(['status' => 'ok']);
     }
+
+    /**
+     * @Route("/removeImage/{id}", name="tiles_remove_image")
+     *
+     * @param Request $request
+     * @param Tile $tile
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeImageAction(Request $request, Tile $tile)
+    {
+        $this->get('image_manager')->removeImage(basename($tile->getImage()));
+        $tile->setImage(null);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($tile);
+        $em->flush();
+
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * @Route("/addImage/{id}", name="tiles_add_image")
+     *
+     * @param Request $request
+     * @param Tile $tile
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function addImageAction(Request $request, Tile $tile)
+    {
+        $image = $request->files->get('image', null);
+
+        if (!empty($image)) {
+            $tile->setImage($this->get('image_manager')->upload($image));
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($tile);
+            $em->flush();
+        }
+
+        return $this->redirect($request->headers->get('referer'));
+    }
 }

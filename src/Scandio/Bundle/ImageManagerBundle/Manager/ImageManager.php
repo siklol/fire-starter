@@ -53,4 +53,14 @@ class ImageManager
 
         return $this->documentRoot.'/'.$fileName;
     }
+
+    /**
+     * @param $imageName
+     */
+    public function removeImage($imageName)
+    {
+        if (is_file($this->imageDir.'/'.$imageName)) {
+            unlink($this->imageDir.'/'.$imageName);
+        }
+    }
 }

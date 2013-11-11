@@ -2,6 +2,7 @@
 
 namespace Scandio\Bundle\FireStarterBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -54,12 +55,19 @@ class Link
      */
     private $position;
 
+    /**
+     * @var ArrayCollection
+     */
+    private $tags;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->modifiedAt = new \DateTime();
         $this->clickCount = 0;
         $this->position = 0;
+
+        $this->tags = new ArrayCollection();
     }
 
 
@@ -71,6 +79,30 @@ class Link
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param Tag $tag
+     */
+    public function addTag(Tag $tag)
+    {
+        $this->tags->add($tag);
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 
     /**

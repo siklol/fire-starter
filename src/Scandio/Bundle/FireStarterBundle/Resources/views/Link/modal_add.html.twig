@@ -1,4 +1,6 @@
-<div id="add-link-modal-{{ tile.id }}" class="modal fade">
+{% set tileId = tile is defined ? tile.id : false %}
+
+<div id="add-link-modal-{{ tileId }}" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,22 +8,27 @@
                 <h4 class="modal-title">{{ 'Add a new link' | trans }}</h4>
             </div>
             <div class="modal-body">
-                <form id="add-link-form-{{ tile.id }}" role="form" method="post" action="{{ path('links_add', {'id': tile.id}) }}" enctype="multipart/form-data">
+                <form id="add-link-form-{{ tileId }}" role="form" method="post" action="{{ path('links_add', (tileId ? {'id': tileId} : {}) ) }}" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="title">{{ 'Title' | trans }}</label>
-                        <input type="title" class="form-control" name="title" id="title" placeholder="{{ 'Add a link name' | trans }}">
+                        <label for="url">{{ 'Url' | trans }}</label>
+                        <input type="text" class="form-control link-url" name="url" placeholder="{{ 'Add a link name' | trans }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="url">{{ 'url' | trans }}</label>
-                        <input type="url" class="form-control" name="url" id="url" placeholder="{{ 'Add a link name' | trans }}">
+                        <label for="title">{{ 'Title' | trans }}</label>
+                        <input type="text" class="form-control link-title" name="title" placeholder="{{ 'Add a link name' | trans }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tags">{{ 'Tags' | trans }}</label>
+                        <input type="text" class="form-control link-tags" name="tags" placeholder="{{ 'i.e. technology, fun, ... Seperate with comma' | trans }}">
                     </div>
 
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Close' | trans }}</button>
-                <button type="button" class="btn btn-primary" onclick="$('#add-link-form-{{ tile.id }}').submit();">{{ 'Add' | trans }}</button>
+                <button type="button" class="btn btn-primary" onclick="$('#add-link-form-{{ tileId }}').submit();">{{ 'Add' | trans }}</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

@@ -4,13 +4,13 @@
     <h1>
         {{ 'Tile list' | trans }}
 
+        <button style="margin-left:5px;" class="btn btn-danger btn-lg pull-right" data-toggle="modal" data-target="#add-link-modal-">{{ 'Add link' | trans }}</button>
+        <button style="margin-left:5px;" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#add-tile-modal">{{ 'Add tile' | trans }}</button>
         <a style="margin-left:5px;" href="{{ path('tiles_reorder_list') }}" class="btn btn-success btn-lg pull-right">{{ 'Resort' | trans }}</a>
-        <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#add-tile-modal">
-            {{ 'Add tile' | trans }}
-        </button>
     </h1>
 
     {% include 'ScandioFireStarterBundle:Tile:modal_add.html.twig' %}
+    {% include 'ScandioFireStarterBundle:Link:modal_add.html.twig' %}
 
     {% for rows in entities %}
         <div class="row">

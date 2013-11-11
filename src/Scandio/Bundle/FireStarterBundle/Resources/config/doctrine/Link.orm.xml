@@ -13,5 +13,6 @@
     <field name="position" type="integer" column="position"/>
 
       <many-to-one target-entity="Tile" field="tile" inversed-by="links" />
+      <many-to-many target-entity="Tag" field="tags" inversed-by="links"/>
   </entity>
 </doctrine-mapping>

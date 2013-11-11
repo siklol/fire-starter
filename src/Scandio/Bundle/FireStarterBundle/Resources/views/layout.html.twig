@@ -39,8 +39,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ path('tiles') }}">{{ 'Home' | trans }}</a></li>
-                <li><a href="videoMusic.html">Video/Music</a></li>
-                <li><a href="places.html">Places</a></li>
+                <li><a href="{{ path('links_uncategorized') }}">{{ 'Uncategorized Links' | trans }}</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -73,6 +72,25 @@
 <script src="/bundles/scandiofirestarter/vendor/stforze-firestarter/js/script.js"></script>
 <script src="/bundles/scandiofirestarter/vendor/html5sortable/jquery.sortable.js"></script>
 {% block javascripts %}{% endblock %}
+
+<script type="application/javascript">
+    $(function() {
+        $('.link-url').blur(function() {
+            var urlInput = $(this),
+                tagsInput = $(this).closest('form').find('input.link-tags'),
+                titleInput = $(this).closest('form').find('input.link-title');
+            $.ajax({
+                url: '{{ path('links_keywords') }}',
+                dataType: 'json',
+                data: {url: urlInput.val()},
+                success: function(data) {
+                    tagsInput.val(data.keywords);
+                    titleInput.val(data.title);
+                }
+            })
+        });
+    });
+</script>
 
 </body>
 </html>

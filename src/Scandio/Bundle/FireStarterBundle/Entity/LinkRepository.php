@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class LinkRepository extends EntityRepository
 {
+    /**
+     * @return array
+     */
+    public function getUncategorized()
+    {
+        return $this->createQueryBuilder('l')
+            ->where('l.tile IS NULL')
+            ->orderBy('l.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -34,12 +34,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('tiles') }}">{{ 'Starter' | trans }}</a>
+            <a class="navbar-brand" href="{{ path('tiles_index') }}">{{ 'Starter' | trans }}</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ path('tiles') }}">{{ 'Home' | trans }}</a></li>
-                <li><a href="{{ path('links_uncategorized') }}">{{ 'Uncategorized Links' | trans }}</a></li>
+                <li class="{{ 'tiles_' in app.request.attributes.get('_route') ? 'active' : '' }}"><a href="{{ path('tiles_index') }}">{{ 'Home' | trans }}</a></li>
+                <li class="{{ 'links_uncategorized' in app.request.attributes.get('_route') ? 'active' : '' }}"><a href="{{ path('links_uncategorized') }}">{{ 'Uncategorized Links' | trans }}</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

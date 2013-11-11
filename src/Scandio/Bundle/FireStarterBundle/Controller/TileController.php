@@ -24,7 +24,7 @@ class TileController extends Controller
     /**
      * Lists all Tile entities.
      *
-     * @Route("/", name="tiles")
+     * @Route("/", name="tiles_index")
      * @Route("/reorder", name="tiles_reorder_list", defaults={"type"="list"})
      * @Method("GET")
      */

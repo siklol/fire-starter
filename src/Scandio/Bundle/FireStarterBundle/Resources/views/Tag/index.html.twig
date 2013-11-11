@@ -1,12 +1,15 @@
 {% extends 'ScandioFireStarterBundle::layout.html.twig' %}
 
 {% block content -%}
-<h1>
-    {{ 'Tile list' | trans }}
+    <h1>{{ 'Tags' | trans }}</h1>
 
-    <a style="margin-left:5px;" href="{{ path('tiles_reorder_list') }}" class="btn btn-success btn-lg pull-right">{{ 'Resort' | trans }}</a>
-    <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#add-tile-modal">
-        {{ 'Add tile' | trans }}
-    </button>
-</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            {% for tag in entities %}
+                <a href="{{ path('tags_show', {'name': tag.name}) }}">{{ tag }}</a> |
+            {% else %}
+                {{ 'Currently no tags available' | trans }}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

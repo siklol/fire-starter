@@ -40,6 +40,7 @@
             <ul class="nav navbar-nav">
                 <li class="{{ 'tiles_' in app.request.attributes.get('_route') ? 'active' : '' }}"><a href="{{ path('tiles_index') }}">{{ 'Home' | trans }}</a></li>
                 <li class="{{ 'links_uncategorized' in app.request.attributes.get('_route') ? 'active' : '' }}"><a href="{{ path('links_uncategorized') }}">{{ 'Uncategorized Links' | trans }}</a></li>
+                <li class="{{ 'tags_' in app.request.attributes.get('_route') ? 'active' : '' }}"><a href="{{ path('tags_index') }}">{{ 'Tags' | trans }}</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

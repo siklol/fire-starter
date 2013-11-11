@@ -3,6 +3,7 @@
 namespace Scandio\Bundle\FireStarterBundle\Controller;
 
 use Scandio\Bundle\FireStarterBundle\Entity\Link;
+use Scandio\Bundle\FireStarterBundle\Entity\Tag;
 use Scandio\Bundle\FireStarterBundle\Entity\TagRepository;
 use Scandio\Library\Http\HtmlParser;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -22,7 +23,8 @@ use Scandio\Bundle\FireStarterBundle\Form\TileType;
 class TagController extends Controller
 {
     /**
-     * @Route("/", name="tags")
+     * @Route("/", name="tags_index")
+     * @Template()
      *
      * @param Request $request
      */
@@ -34,5 +36,17 @@ class TagController extends Controller
             ->getRepository('Scandio\Bundle\FireStarterBundle\Entity\Tag');
 
         return ['entities' => $tagsRepository->getAll()];
+    }
+
+    /**
+     * @Route("/show/{name}", name="tags_show")
+     * @Template()
+     *
+     * @param Request $request
+     * @param Tag $tag
+     */
+    public function showAction(Request $request, Tag $tag)
+    {
+        return ['tag' => $tag];
     }
 }

@@ -1,0 +1,7 @@
+{% extends 'ScandioFireStarterBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ tag }}</h1>
+
+    {% include 'ScandioFireStarterBundle:Tag:links.html.twig' with {'links': tag.links} %}
+{% endblock %}

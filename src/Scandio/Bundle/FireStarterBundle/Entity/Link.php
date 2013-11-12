@@ -60,6 +60,16 @@ class Link
      */
     private $tags;
 
+    /**
+     * @var string
+     */
+    private $screenshot;
+
+    /**
+     * @var string
+     */
+    private $pdf;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -79,6 +89,38 @@ class Link
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param string $pdf
+     */
+    public function setPdf($pdf)
+    {
+        $this->pdf = $pdf;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPdf()
+    {
+        return $this->pdf;
+    }
+
+    /**
+     * @param string $screenshot
+     */
+    public function setScreenshot($screenshot)
+    {
+        $this->screenshot = $screenshot;
+    }
+
+    /**
+     * @return string
+     */
+    public function getScreenshot()
+    {
+        return $this->screenshot;
     }
 
     /**

@@ -11,6 +11,8 @@
     <field name="modifiedAt" type="datetime" column="modified_at"/>
     <field name="clickCount" type="integer" column="click_count"/>
     <field name="position" type="integer" column="position"/>
+    <field name="screenshot" type="string" column="screenshot" nullable="true"/>
+    <field name="pdf" type="string" column="pdf" nullable="true"/>
 
       <many-to-one target-entity="Tile" field="tile" inversed-by="links" />
       <many-to-many target-entity="Tag" field="tags" inversed-by="links"/>

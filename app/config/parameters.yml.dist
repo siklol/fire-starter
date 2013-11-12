@@ -13,3 +13,6 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    link.screen_dir:   /var/www/test/images
+    link.web_dir:      /images

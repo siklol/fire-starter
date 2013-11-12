@@ -6,6 +6,7 @@ use Scandio\Bundle\FireStarterBundle\Entity\Link;
 use Scandio\Bundle\FireStarterBundle\Entity\Tag;
 use Scandio\Bundle\FireStarterBundle\Entity\TagRepository;
 use Scandio\Library\Http\HtmlParser;
+use Scandio\Library\Url\ScreenshotCreator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

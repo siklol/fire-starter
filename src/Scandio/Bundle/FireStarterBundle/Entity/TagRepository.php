@@ -18,7 +18,7 @@ class TagRepository extends EntityRepository
      */
     public function add(Link $link, $tagName)
     {
-        $tag = $this->find($tagName);
+        $tag = $this->findOneBy(['name' => $tagName]);
         if (!$tag instanceof Tag) {
             $tag = new Tag();
         }

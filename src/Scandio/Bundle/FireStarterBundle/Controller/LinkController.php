@@ -6,6 +6,7 @@ use Scandio\Bundle\FireStarterBundle\Entity\Link;
 use Scandio\Bundle\FireStarterBundle\Entity\LinkRepository;
 use Scandio\Bundle\FireStarterBundle\Entity\TagRepository;
 use Scandio\Library\Http\HtmlParser;
+use Scandio\Library\Url\ScreenshotCreator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -41,6 +42,12 @@ class LinkController extends Controller
             $link->setUrl($url);
             $link->setTile($tile);
             $link->setFavicon($this->get('fav_icon_fetcher')->getByGoogleService($url));
+
+            $pdf = ScreenshotCreator::getByWkhtmltopdf($url, $this->container->getParameter('link.screen_dir'));
+            $jpg = ScreenshotCreator::getByCutyCapt($url, $this->container->getParameter('link.screen_dir'));
+
+            $link->setPdf($this->container->getParameter('link.web_dir').'/'.$pdf);
+            $link->setScreenshot($this->container->getParameter('link.web_dir').'/'.$jpg);
 
             $em = $this->getDoctrine()->getManager();
             /** @var TagRepository $tagsRepository */

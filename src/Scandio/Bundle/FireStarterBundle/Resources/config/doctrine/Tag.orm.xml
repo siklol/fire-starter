@@ -5,6 +5,7 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="name" type="string" column="name" length="255"/>
+      <field name="slug" type="string" column="slug" length="255"/>
 
       <many-to-many target-entity="Link" field="links" mapped-by="tags"/>
   </entity>

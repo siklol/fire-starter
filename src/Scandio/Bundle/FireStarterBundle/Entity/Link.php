@@ -46,6 +46,11 @@ class Link
     private $tile;
 
     /**
+     * @var string
+     */
+    private $slug;
+
+    /**
      * @var integer
      */
     private $clickCount;
@@ -180,6 +185,14 @@ class Link
     }
 
     /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
      * @param \Scandio\Bundle\FireStarterBundle\Entity\Tile $tile
      */
     public function setTile($tile)
@@ -204,8 +217,39 @@ class Link
     public function setTitle($title)
     {
         $this->title = $title;
+        $this->slug = self::slugify($title);
     
         return $this;
+    }
+
+    /**
+     * @param $text
+     * @return mixed|string
+     */
+    static public function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv')) {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        if (empty($text)) {
+            return 'n-a';
+        }
+
+        return $text;
     }
 
     /**

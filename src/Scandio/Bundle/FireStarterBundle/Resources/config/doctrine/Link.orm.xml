@@ -5,6 +5,7 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="title" type="string" column="title" length="255"/>
+      <field name="slug" type="string" column="slug" length="255"/>
     <field name="url" type="string" column="url" length="255"/>
     <field name="favicon" type="string" column="favicon" length="255" nullable="true"/>
     <field name="createdAt" type="datetime" column="created_at"/>

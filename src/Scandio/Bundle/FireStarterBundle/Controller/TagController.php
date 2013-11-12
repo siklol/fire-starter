@@ -40,7 +40,7 @@ class TagController extends Controller
     }
 
     /**
-     * @Route("/show/{name}", name="tags_show")
+     * @Route("/show/{slug}", name="tags_show")
      * @Template()
      *
      * @param Request $request

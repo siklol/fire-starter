@@ -28,7 +28,7 @@
                     <td><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></td>
                     <td>
                         {% for tag in link.tags %}
-                            <a href="{{ path('tags_show', {'name': tag.name}) }}">{{ tag }}</a>|
+                            <a href="{{ path('tags_show', {'slug': tag.slug}) }}">{{ tag }}</a>|
                         {% else %}
                             {{ 'No tags associated' | trans }}
                         {% endfor %}

@@ -21,6 +21,11 @@ class Tag
     private $name;
 
     /**
+     * @var string
+     */
+    private $slug;
+
+    /**
      * @var Link
      */
     private $links;
@@ -73,8 +78,14 @@ class Tag
     public function setName($name)
     {
         $this->name = $name;
+        $this->slug = Link::slugify($name);
     
         return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

@@ -56,8 +56,13 @@ class LinkController extends Controller
             $em->persist($link);
             $em->flush();
 
-            $tags = explode(',', $tags);
-            array_walk($tags, function(&$tag) { $tag = trim($tag); });
+            $tags = array_unique(explode(',', $tags));
+            array_walk($tags, function(&$tag) {
+                $tag = trim($tag);
+                if (empty($tag)) {
+                    unset($tag);
+                }
+            });
             foreach ($tags as $tag) {
                 $tagsRepository->add($link, $tag);
             }

@@ -34,27 +34,7 @@
             {% endif %}
         </div>
         <div class="col-lg-9">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>{{ 'Name' | trans }}</th>
-                        <th>{{ 'Url' | trans }}</th>
-                        <th>{{ 'Action' | trans }}</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                {% for link in tile.links %}
-                    <tr>
-                        <td><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></td>
-                        <td>{{ link.url }}</td>
-                        <td>
-                            <a href="{{ path('links_remove', {'id': link.id}) }}" class="btn btn-danger">{{ 'delete' | trans }}</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            {% include 'ScandioFireStarterBundle:Tag:links.html.twig' with {'links': tile.links} %}
         </div>
     </div>
 {% endblock %}

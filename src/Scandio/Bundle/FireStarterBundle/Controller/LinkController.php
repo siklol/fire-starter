@@ -36,6 +36,7 @@ class LinkController extends Controller
         $title = $request->get('title', '');
         $url = $request->get('url', '');
         $tags = $request->get('tags', '');
+        $takeScreenshots = (bool) $request->get('take-screenshots', false);
 
         if (!empty($title) && !empty($url)) {
             $link->setTitle($title);
@@ -43,11 +44,18 @@ class LinkController extends Controller
             $link->setTile($tile);
             $link->setFavicon($this->get('fav_icon_fetcher')->getByGoogleService($url));
 
-            $pdf = ScreenshotCreator::getByWkhtmltopdf($url, $this->container->getParameter('link.screen_dir'));
-            $jpg = ScreenshotCreator::getByCutyCapt($url, $this->container->getParameter('link.screen_dir'));
+            $pdf = null;
+            $jpg = null;
+            if ($takeScreenshots) {
+                $pdf  = $this->container->getParameter('link.web_dir').'/';
+                $pdf .= ScreenshotCreator::getByWkhtmltopdf($url, $this->container->getParameter('link.screen_dir'));
+                $jpg  = $this->container->getParameter('link.web_dir').'/';
+                $jpg .= ScreenshotCreator::getByCutyCapt($url, $this->container->getParameter('link.screen_dir'));
+            }
 
-            $link->setPdf($this->container->getParameter('link.web_dir').'/'.$pdf);
-            $link->setScreenshot($this->container->getParameter('link.web_dir').'/'.$jpg);
+
+            $link->setPdf($pdf);
+            $link->setScreenshot($jpg);
 
             $em = $this->getDoctrine()->getManager();
             /** @var TagRepository $tagsRepository */

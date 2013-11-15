@@ -3,5 +3,9 @@
 {% block content -%}
     <h1>{{ 'Uncategorized Links' | trans }}</h1>
 
-    {% include 'ScandioFireStarterBundle:Tag:links.html.twig' with {'links': links} %}
+    <div class="row">
+        <div class="col-lg-12">
+            {% include 'ScandioFireStarterBundle:Tag:links.html.twig' with {'links': links} %}
+        </div>
+    </div>
 {% endblock %}

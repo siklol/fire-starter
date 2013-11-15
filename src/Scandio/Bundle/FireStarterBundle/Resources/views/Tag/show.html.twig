@@ -3,5 +3,9 @@
 {% block content -%}
     <h1>{{ tag }}</h1>
 
-    {% include 'ScandioFireStarterBundle:Tag:links.html.twig' with {'links': tag.links} %}
+    <div class="row">
+        <div class="col-lg-12">
+            {% include 'ScandioFireStarterBundle:Tag:links.html.twig' with {'links': tag.links} %}
+        </div>
+    </div>
 {% endblock %}

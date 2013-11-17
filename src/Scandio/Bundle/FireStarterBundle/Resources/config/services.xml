@@ -4,17 +4,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <parameters>
-        <parameter key="scandio_fire_starter.example.class">Scandio\Bundle\FireStarterBundle\Example</parameter>
+        <parameter key="channel_manager.class">Scandio\Bundle\FireStarterBundle\Manager\ChannelManager</parameter>
     </parameters>
 
     <services>
-        <service id="scandio_fire_starter.example" class="%scandio_fire_starter.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="channel_manager" class="%channel_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
     </services>
-    -->
 </container>

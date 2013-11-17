@@ -1,0 +1,27 @@
+<div id="add-channel-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{ 'Add a new Channel' | trans }}</h4>
+            </div>
+            <div class="modal-body">
+                <form id="add-channel-form" role="form" method="post" action="{{ path('channels_add') }}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">{{ 'Channel Name' | trans }}</label>
+                        <input type="name" class="form-control" name="name" id="name" placeholder="{{ 'Add a channel name' | trans }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">{{ 'Description' | trans }}</label>
+                        <textarea class="form-control" rows="5" id="description" name="description" placeholder="{{ 'Add a description' | trans }}"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Close' | trans }}</button>
+                <button type="button" class="btn btn-primary" onclick="$('#add-channel-form').submit();">{{ 'Add' | trans }}</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

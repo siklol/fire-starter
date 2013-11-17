@@ -6,9 +6,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Tile
+ * Channel
  */
-class Tile
+class Channel
 {
     /**
      * @var integer
@@ -18,7 +18,12 @@ class Tile
     /**
      * @var string
      */
-    private $title;
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $slug;
 
     /**
      * @var string
@@ -36,38 +41,21 @@ class Tile
     private $modifiedAt;
 
     /**
-     * @var integer
-     */
-    private $position;
-
-    /**
-     * @var Link
-     */
-    private $links;
-
-    /**
-     * @var string
-     */
-    private $image;
-
-    /**
      * @var ArrayCollection
      */
-    private $channels;
+    private $tiles;
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->modifiedAt = new \DateTime();
-        $this->position = 0;
 
-        $this->links =  new ArrayCollection();
-        $this->channels = new ArrayCollection();
+        $this->tiles = new ArrayCollection();
     }
 
     public function __toString()
     {
-        return $this->title;
+        return $this->name;
     }
 
 
@@ -82,67 +70,82 @@ class Tile
     }
 
     /**
-     * @param \Scandio\Bundle\FireStarterBundle\Entity\Link $links
+     * @param Tile $tile
+     * @return bool
      */
-    public function setLinks($links)
+    public function has(Tile $tile)
     {
-        $this->links = $links;
+        return $this->tiles->contains($tile);
+    }
+
+    public function remove(Tile $tile)
+    {
+        $this->tiles->removeElement($tile);
     }
 
     /**
-     * @return \Scandio\Bundle\FireStarterBundle\Entity\Link
-     */
-    public function getLinks()
-    {
-        return $this->links;
-    }
-
-    /**
-     * Set title
+     * Set name
      *
-     * @param string $title
-     * @return Tile
+     * @param string $name
+     * @return Channel
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
+        $this->slug = Link::slugify($name);
     
         return $this;
     }
 
     /**
-     * Get title
+     * Get name
      *
      * @return string 
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
+        return $this->name;
     }
 
     /**
-     * @param Channel $channel
+     * @param string $slug
      */
-    public function addChannel(Channel $channel)
+    public function setSlug($slug)
     {
-        if (!$this->channels->contains($channel)) {
-            $this->channels->add($channel);
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param Tile $tile
+     */
+    public function add(Tile $tile)
+    {
+        if (!$this->tiles->contains($tile)) {
+            $this->tiles->add($tile);
         }
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getChannels()
+    public function getTiles()
     {
-        return $this->channels;
+        return $this->tiles;
     }
 
     /**
      * Set description
      *
      * @param string $description
-     * @return Tile
+     * @return Channel
      */
     public function setDescription($description)
     {
@@ -165,7 +168,7 @@ class Tile
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Tile
+     * @return Channel
      */
     public function setCreatedAt($createdAt)
     {
@@ -188,7 +191,7 @@ class Tile
      * Set modifiedAt
      *
      * @param \DateTime $modifiedAt
-     * @return Tile
+     * @return Channel
      */
     public function setModifiedAt($modifiedAt)
     {
@@ -205,44 +208,5 @@ class Tile
     public function getModifiedAt()
     {
         return $this->modifiedAt;
-    }
-
-    /**
-     * Set position
-     *
-     * @param integer $position
-     * @return Tile
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return integer 
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param string $image
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 }

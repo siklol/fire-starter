@@ -15,9 +15,17 @@ class TileRepository extends EntityRepository
     /**
      * @return array
      */
-    public function getAll()
+    public function getAll(Channel $channel = null)
     {
-        return $this->createQueryBuilder('t')->orderBy('t.position')->getQuery()->getResult();
+        $qb = $this->createQueryBuilder('t')->orderBy('t.position');
+
+        if ($channel instanceof Channel) {
+            $qb ->join('t.channels', 'c')
+                ->where('c.id = :id')
+                ->setParameter('id', $channel->getId());
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
     /**

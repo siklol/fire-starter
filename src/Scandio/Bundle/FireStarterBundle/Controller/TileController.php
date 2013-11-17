@@ -2,6 +2,7 @@
 
 namespace Scandio\Bundle\FireStarterBundle\Controller;
 
+use Scandio\Bundle\FireStarterBundle\Entity\Channel;
 use Scandio\Bundle\FireStarterBundle\Entity\Link;
 use Scandio\Bundle\FireStarterBundle\Entity\TileRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -26,13 +27,14 @@ class TileController extends Controller
      *
      * @Route("/", name="tiles_index")
      * @Route("/reorder", name="tiles_reorder_list", defaults={"type"="list"})
+     * @Route("/c/{slug}", name="channels_show_tiles")
      * @Method("GET")
      */
-    public function indexAction(Request $request, $type = 'tiles')
+    public function indexAction(Request $request, $type = 'tiles', Channel $channel = null)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ScandioFireStarterBundle:Tile')->getAll();
+        $entities = $em->getRepository('ScandioFireStarterBundle:Tile')->getAll($channel);
         $type = in_array($type, ['list', 'tiles']) ? $type : '';
 
         if ($type == 'tiles') {
@@ -42,7 +44,8 @@ class TileController extends Controller
         return $this->render("ScandioFireStarterBundle:Tile:index.$type.html.twig", [
             'entities' => $entities,
             'form' => $this->createForm(new TileType())->createView(),
-            'type' => $type
+            'type' => $type,
+            'channel' => $channel
         ]);
     }
 

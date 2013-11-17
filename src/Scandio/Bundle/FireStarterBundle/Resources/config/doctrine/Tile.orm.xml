@@ -16,5 +16,7 @@
               <order-by-field name="clickCount" direction="DESC"/>
           </order-by>
       </one-to-many>
+
+      <many-to-many target-entity="Channel" field="channels" mapped-by="tiles"/>
   </entity>
 </doctrine-mapping>

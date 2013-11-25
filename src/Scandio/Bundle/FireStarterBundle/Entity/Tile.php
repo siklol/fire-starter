@@ -277,6 +277,6 @@ class Tile
      */
     public function isType($type)
     {
-        return defined('Scandio\\Bundle\\FireStarterBundle\\Entity\\Tile::TYPE_'.strtoupper($type));
+        return constant('Scandio\\Bundle\\FireStarterBundle\\Entity\\Tile::TYPE_'.strtoupper($type)) == $this->type;
     }
 }

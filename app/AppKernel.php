@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Scandio\Bundle\FireStarterBundle\ScandioFireStarterBundle(),
             new Scandio\Bundle\ImageManagerBundle\ScandioImageManagerBundle(),
+            new Scandio\Bundle\BitcoinBundle\ScandioBitcoinBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

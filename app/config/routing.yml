@@ -1,3 +1,8 @@
+scandio_bitcoin:
+    resource: "@ScandioBitcoinBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 scandio_fire_starter:
     resource: "@ScandioFireStarterBundle/Controller/"
     type:     annotation

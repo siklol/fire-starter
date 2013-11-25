@@ -1,0 +1,17 @@
+<script>
+    $(function() {
+        var div = $('#bitcoin-exchange-rate');
+        $.ajax({
+            url: '/app_dev.php/bitcoins/exchange',
+            dataType: 'json',
+            success: function(data) {
+                div.html(data.price);
+            }
+        });
+    });
+</script>
+<div id="bitcoin-exchange-rate-wrapper" style="background-color: white; color: black; border-radius: 11px;">
+    <img width="75px" height="60px" style="float: left; margin-left: 15px;" src="/widgets/bitcoin.jpg">
+    <span id="bitcoin-exchange-rate" style="font-size: 47px;">0.00</span>$
+    <br style="clear:both">
+</div>

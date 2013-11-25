@@ -277,6 +277,6 @@ class Tile
      */
     public function isType($type)
     {
-        return defined('Tile::TYPE_'.strtoupper($type));
+        return defined('Scandio\\Bundle\\FireStarterBundle\\Entity\\Tile::TYPE_'.strtoupper($type));
     }
 }

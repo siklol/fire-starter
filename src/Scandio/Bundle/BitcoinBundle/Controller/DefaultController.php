@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * @Route("bitcoins")
+ * @Route("/bitcoins")
  *
  * Class DefaultController
  * @package Scandio\Bundle\BitcoinBundle\Controller
@@ -25,6 +25,8 @@ class DefaultController extends Controller
     {
         /** @var ExchangeRateFetcherInterface $rateFetcher */
         $rateFetcher = $this->get('scandio_bitcoin.rate_fetcher');
-        return new JsonResponse(array('price' => $rateFetcher->exchangeRate(1, $inboundCurrency, $outboundCurrency)));
+        return new JsonResponse(array(
+            'price' => round($rateFetcher->exchangeRate(1, $inboundCurrency, $outboundCurrency), 2)
+        ));
     }
 }

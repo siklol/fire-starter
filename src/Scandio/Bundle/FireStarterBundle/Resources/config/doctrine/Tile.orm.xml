@@ -10,6 +10,7 @@
     <field name="modifiedAt" type="datetime" column="modified_at"/>
     <field name="position" type="integer" column="position"/>
     <field name="image" type="string" column="image" nullable="true"/>
+    <field name="type" type="integer" column="tile_type"/>
 
       <one-to-many target-entity="Link" mapped-by="tile" field="links">
           <order-by>

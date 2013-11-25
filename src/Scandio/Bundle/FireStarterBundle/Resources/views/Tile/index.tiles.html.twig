@@ -45,13 +45,17 @@
                             </h1>
 
                             <div class="inside">
-                                {{ tile.description }}<br/>
+                                {% if tile.isType('widget') %}
+                                    {{ tile.description | raw }}
+                                {% else %}
+                                    {{ tile.description }}<br/>
 
-                                {% for link in tile.links %}
-                                    <a href="{{ path('links_out', {'id': link.id}) }}" title="{{ link.title }}" target="_blank">
-                                        {% if link.favicon %}<img src="{{ link.favicon }}" />{% endif %}{{ link.title }}
-                                    </a>
-                                {% endfor %}
+                                    {% for link in tile.links %}
+                                        <a href="{{ path('links_out', {'id': link.id}) }}" title="{{ link.title }}" target="_blank">
+                                            {% if link.favicon %}<img src="{{ link.favicon }}" />{% endif %}{{ link.title }}
+                                        </a>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                         </div>
                     </div>

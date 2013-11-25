@@ -62,11 +62,13 @@ class TileController extends Controller
         $title = $request->get('title', '');
         $description = $request->get('description', '');
         $image = $request->files->get('image', null);
+        $type = $request->files->get('type', Tile::TYPE_DEFAULT);
 
         if (!empty($title)) {
             $tile->setTitle($title);
             $tile->setDescription($description);
             $tile->setImage($this->get('image_manager')->upload($image));
+            $tile->setType($type);
 
             $em = $this->getDoctrine()->getManager();
 

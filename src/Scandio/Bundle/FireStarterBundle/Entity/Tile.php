@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tile
 {
+    const TYPE_DEFAULT = 1;
+    const TYPE_WIDGET = 2;
+
     /**
      * @var integer
      */
@@ -51,6 +54,11 @@ class Tile
     private $image;
 
     /**
+     * @var integer
+     */
+    private $type;
+
+    /**
      * @var ArrayCollection
      */
     private $channels;
@@ -63,13 +71,14 @@ class Tile
 
         $this->links =  new ArrayCollection();
         $this->channels = new ArrayCollection();
+
+        $this->type = self::TYPE_DEFAULT;
     }
 
     public function __toString()
     {
         return $this->title;
     }
-
 
     /**
      * Get id
@@ -79,6 +88,22 @@ class Tile
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return int
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
@@ -244,5 +269,14 @@ class Tile
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * @param $type
+     * @return mixed
+     */
+    public function isType($type)
+    {
+        return defined('Tile::TYPE_'.strtoupper($type));
     }
 }

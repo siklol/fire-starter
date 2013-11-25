@@ -2,6 +2,7 @@
 
 namespace Scandio\Bundle\FireStarterBundle\Form;
 
+use Scandio\Bundle\FireStarterBundle\Entity\Tile;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -17,6 +18,12 @@ class TileType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
+            ->add('type', 'choice', array(
+                'choices' => array(
+                    Tile::TYPE_DEFAULT => 'Default',
+                    Tile::TYPE_WIDGET => 'Widget'
+                )
+            ))
         ;
     }
     

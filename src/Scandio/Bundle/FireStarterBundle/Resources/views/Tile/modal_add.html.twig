@@ -18,6 +18,14 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="type">{{ 'Type' | trans }}</label>
+                        <select class="form-control" id="type" name="type">
+                            <option value="1" selected="selected">{{ 'Default' | trans }}</option>
+                            <option value="2">{{ 'Widget' | trans }}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="image">{{ 'Image' | trans }}</label>
                         <input type="file" name="image" id="image">
                         <p class="help-block">{{ 'Upload your tile image' | trans }}</p>
